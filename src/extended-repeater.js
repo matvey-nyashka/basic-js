@@ -15,7 +15,28 @@ import { NotImplementedError } from '../extensions/index.js';
  * => 'STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS**STRINGPLUS00PLUS00PLUS'
  *
  */
-export default function repeater(/* str, options */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
-}
+export default function repeater(str, options) {
+  let adit = [];
+  let addition = (typeof options.addition != "undefined") ? String(options.addition) : "";
+  if(options.additionRepeatTimes){
+    for (let i =0; i < options.additionRepeatTimes; i++){
+      adit.push(addition)
+    }
+  }else {
+    adit.push(String(addition))
+  }
+  let additionSep = (options.additionSeparator) ? options.additionSeparator : '|'
+  let sep = adit.join(additionSep);
+  let arr = [];
+  if(options.repeatTimes){
+    for (let i = 0; i < options.repeatTimes; i++){
+    arr.push(String(str) + sep)
+    }
+  }else {
+    arr.push(String(str) + sep)
+  }  
+  let adSep = (options.separator) ? options.separator : '+'
+  return arr.join(adSep)
+
+};
+
